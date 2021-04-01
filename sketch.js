@@ -29,7 +29,7 @@ function setup() {
   
     ctx = getAudioContext();
     ctxOn = createButton('turn on Audio');
-    ctxOn.mousePressed(() => {
+    ctxOn.mouseMoved(() => {
   	ctx.resume().then(() => {
   	console.log('Audio Context is now ON');
         ctxOn.hide();
