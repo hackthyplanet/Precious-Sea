@@ -10,10 +10,12 @@ var water = []; //water array
 
 var soundscape
 
-var galaxy
+let ctx, ctxOn;
+
+
 
 function preload(){
-  getAudioContext().suspend();
+  
   
   soundscape = loadSound('assets/outtosea.mp3')
 
@@ -23,6 +25,16 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   c = w / scl;
   r = h / scl;
+
+  
+    ctx = getAudioContext();
+    ctxOn = createButton('turn on Audio');
+    ctxOn.mousePressed(() => {
+  	ctx.resume().then(() => {
+  	console.log('Audio Context is now ON');
+        ctxOn.hide();
+  	});
+    });
 
   
   
@@ -45,7 +57,7 @@ function draw() {
 	waves(); //display wave
 	moveObj(); //move mountains
 
-  mousePressed()
+ 
 }
 
 //shift all the objects created
@@ -86,9 +98,7 @@ function waves(){
 	pop();
 }
 
-function mousePressed() {
-  userStartAudio();
-}
+
 
 
 
